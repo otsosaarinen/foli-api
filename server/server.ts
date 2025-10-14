@@ -5,7 +5,13 @@ const port = 3000;
 app.get("/", async (req, res) => {
 	const response = await fetch("https://data.foli.fi/siri/sm/pretty");
 	const data = await response.json();
+	res.send(data);
+});
 
+app.get("/:d", async (req, res) => {
+	const id = req.params.d;
+	const response = await fetch(`https://data.foli.fi/siri/sm/${id}/pretty`);
+	const data = await response.json();
 	res.send(data);
 });
 
