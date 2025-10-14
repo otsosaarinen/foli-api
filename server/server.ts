@@ -27,6 +27,8 @@ const swaggerOptions = {
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+app.use(cors());
+
 /**
  * @openapi
  * /pretty:
@@ -38,9 +40,6 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
  *       404:
  *         description: Error while fetching data.
  */
-
-app.use(cors());
-
 app.get("/", async (req, res) => {
 	const response = await fetch("https://data.foli.fi/siri/sm/pretty");
 	if (response.ok) {
