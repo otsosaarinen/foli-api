@@ -1,6 +1,6 @@
 # Föli API
 
-This project provides a public API wrapper for Föli transportation data. It allows fetching the timetable for all bus stops or a single bus stop by ID. Official documentation by Föli can be read here https://data.foli.fi/doc/siri/v0/sm
+This project provides a public API wrapper for Föli transportation data. It allows fetching the timetable for all bus stops or a single bus stop by ID. Official documentation by Föli can be read here https://data.foli.fi/doc/siri/v0/sm. Also practiced creating an API documentation using Swagger.
 
 ## How to install
 
