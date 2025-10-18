@@ -6,6 +6,8 @@ import swaggerJsdoc from "swagger-jsdoc";
 const app = express();
 const port = 3000;
 
+app.use(cors());
+
 const swaggerOptions = {
 	definition: {
 		openapi: "3.0.0",
@@ -18,30 +20,18 @@ const swaggerOptions = {
 			{
 				url: `http://localhost:${port}`,
 			},
-			{ url: "https://data.foli.fi/siri/sm" },
+			{ url: "https://data.foli.fi/siri" },
 		],
 	},
 	apis: ["./server/*.ts"],
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.use(cors());
-
-/**
- * @openapi
- * /pretty:
- *   get:
- *     description: Fetch the transporation data of all bus stops.
- *     responses:
- *       200:
- *         description: Returns a list of all bus stops.
- *       404:
- *         description: Error while fetching data.
- */
-app.get("/", async (req, res) => {
-	const response = await fetch("https://data.foli.fi/siri/sm/pretty");
+app.get("/sm", async (req, res) => {
+	const response = await fetch("https://data.foli.fi/siri/sm");
 	if (response.ok) {
 		const data = await response.json();
 		res.status(200).json(data);
@@ -50,25 +40,31 @@ app.get("/", async (req, res) => {
 	}
 });
 
-/**
- * @openapi
- * /{id}/pretty:
- *   get:
- *     description: Fetch a transportation data of a single bus stop by ID.
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *     responses:
- *       200:
- *         description: Returns a timetable for a specific bus stop.
- *       404:
- *         description: Error while fetching data. */
-app.get("/:id", async (req, res) => {
+app.get("/sm/:id", async (req, res) => {
 	const id = req.params.id;
-	const response = await fetch(`https://data.foli.fi/siri/sm/${id}/pretty`);
+	const response = await fetch(`https://data.foli.fi/siri/sm/${id}`);
+
+	if (response.ok) {
+		const data = await response.json();
+		res.status(200).json(data);
+	} else {
+		res.status(404).json({ error: "Data not found" });
+	}
+});
+
+app.get("/vm", async (req, res) => {
+	const response = await fetch("https://data.foli.fi/siri/vm");
+	if (response.ok) {
+		const data = await response.json();
+		res.status(200).json(data);
+	} else {
+		res.status(404).json({ error: "Data not found" });
+	}
+});
+
+app.get("/vm/:id", async (req, res) => {
+	const id = req.params.id;
+	const response = await fetch(`https://data.foli.fi/siri/vm/${id}`);
 
 	if (response.ok) {
 		const data = await response.json();
