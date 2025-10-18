@@ -7,14 +7,10 @@
 		"dev": "vite",
 		"build": "tsc -b && vite build",
 		"lint": "eslint .",
-		"preview": "vite preview",
-		"dev_server": "nodemon --exec tsx server/server.ts",
-		"prod_server": "npx tsx server/server.ts"
+		"preview": "vite preview"
 	},
 	"dependencies": {
 		"@tailwindcss/vite": "^4.1.14",
-		"cors": "^2.8.5",
-		"express": "^5.1.0",
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1",
 		"swagger-jsdoc": "^6.2.8",
@@ -23,8 +19,6 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.36.0",
-		"@types/cors": "^2.8.19",
-		"@types/express": "^5.0.3",
 		"@types/node": "^24.6.0",
 		"@types/react": "^19.1.16",
 		"@types/react-dom": "^19.1.9",
@@ -35,7 +29,6 @@
 		"eslint-plugin-react-hooks": "^5.2.0",
 		"eslint-plugin-react-refresh": "^0.4.22",
 		"globals": "^16.4.0",
-		"nodemon": "^3.1.10",
 		"prettier": "^3.6.2",
 		"prettier-plugin-tailwindcss": "^0.7.0",
 		"tsx": "^4.20.6",
