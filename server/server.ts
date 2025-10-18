@@ -23,6 +23,7 @@ const swaggerOptions = {
 			{ url: "https://data.foli.fi/siri" },
 		],
 	},
+	apis: ["./server/*.ts"],
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
