@@ -14,7 +14,7 @@ const swaggerOptions = {
 		info: {
 			title: "Föli API",
 			version: "1.0.0",
-			description: "Public API wrapper for Föli transport data",
+			description: "API wrapper for Föli transportation data",
 		},
 		servers: [
 			{
@@ -23,7 +23,6 @@ const swaggerOptions = {
 			{ url: "https://data.foli.fi/siri" },
 		],
 	},
-	apis: ["./server/*.ts"],
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
