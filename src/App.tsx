@@ -1,54 +1,33 @@
 import "./App.css";
 
+import Endpoint from "./components/Endpoint";
+
 function App() {
 	return (
 		<>
 			<div className="flex h-screen flex-col items-center justify-start gap-10 bg-neutral-800 text-yellow-300">
 				<h1 className="mt-20 text-9xl font-bold">FÖLI API</h1>
-
-				<h2 className="text-white">
-					<div className="text-xl font-medium">Endpoints</div>
-					<div className="my-2 h-0.5 w-200 bg-yellow-300"></div>
-					<div className="flex flex-col gap-1 text-lg font-medium">
-						<div>
-							<div>
-								{" "}
-								<span className="rounded-lg bg-green-600 px-3 py-0.5">
-									GET
-								</span>{" "}
-								/api/sm
-							</div>
-							<div className="text-base italic">
-								Returns a list of Föli bus stops
-							</div>
-						</div>
-						<div>
-							<div>
-								{" "}
-								<span className="rounded-lg bg-green-600 px-3 py-0.5">
-									GET
-								</span>{" "}
-								/api/sm/:id
-							</div>
-							<div className="text-base italic">
-								Returns details of the specified bus stop, like
-								the arriving buses and their coordinates
-							</div>
-						</div>
-						<div>
-							<div>
-								{" "}
-								<span className="rounded-lg bg-green-600 px-3 py-0.5">
-									GET
-								</span>{" "}
-								/api/vm
-							</div>
-							<div className="text-base italic">
-								Returns a list of all Föli buses and their
-								detailed information
-							</div>
-						</div>
-					</div>
+				<div className="font-medium text-white">
+					This website wraps the official TSJL data interface and
+					exposes it as a simple proxy
+				</div>
+				<h2 className="flex flex-col gap-3 text-center">
+					<div className="text-2xl font-medium">Endpoints</div>
+					<Endpoint
+						method="GET"
+						path="/api/sm"
+						description="Returns list of all bus stops"
+					/>
+					<Endpoint
+						method="GET"
+						path="/api/sm/:id"
+						description="Returns details of the specified bus stop"
+					/>
+					<Endpoint
+						method="GET"
+						path="/api/vm"
+						description="Returns list of all buses"
+					/>
 				</h2>
 				<h3 className="w-200 text-center font-medium">
 					API datasource: Public transport operation and timetable
